@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thisweek-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: thisweek-app
+  template:
+    metadata:
+      labels:
+        app: thisweek-app
+    spec:
+      containers:
+      - command:
+        - yarn run start -p 8083
+        image: josephvano/thisweek:v0.0.1
+        name: thisweek-app
+        ports:
+        - containerPort: 8083
