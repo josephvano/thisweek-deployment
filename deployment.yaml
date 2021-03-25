@@ -14,8 +14,6 @@ spec:
         app: thisweek-app
     spec:
       containers:
-      - command:
-        - yarn run start -p 8083
         image: josephvano/thisweek:v0.0.1
         name: thisweek-app
         ports:
