@@ -14,7 +14,7 @@ spec:
         app: thisweek-app
     spec:
       containers:
+      - name: thisweek-app
         image: josephvano/thisweek:v0.0.1
-        name: thisweek-app
         ports:
         - containerPort: 8083
