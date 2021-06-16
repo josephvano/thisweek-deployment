@@ -1,0 +1,39 @@
+rules:
+  - id: helm.incorrect-api-version
+    languages:
+      - yaml
+    patterns:
+      - pattern: |
+          apiVersion: ...
+      - pattern-not: |
+          apiVersion: v2
+    message: Helm chart should be apiVersion:v2
+    metadata:
+      references:
+        - https://helm.sh/docs/topics/v2_v3_migration/
+    severity: ERROR
+    paths:
+      include:
+        - Chart.yaml
+  - id: helm.deployment.missing-resources
+    languages:
+      - yaml
+    patterns:
+      - pattern: |
+                ...
+                containers:
+                  ...
+      - pattern-not-inside: |
+                ...
+                containers:
+                  ...
+                  resources:
+    message: Helm deployment file missing resources declaration
+    severity: ERROR
+    paths:
+      include:
+        - deployment.yaml
+        - deployment.yml
+    metadata:
+      references:
+        - https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/

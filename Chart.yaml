@@ -1,0 +1,4 @@
+apiVersion: v2
+name: thisweek-deployment
+version: 0.0.1
+icon: https://vano.io/favicon.ico
